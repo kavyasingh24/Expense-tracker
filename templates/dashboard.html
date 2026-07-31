@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-4">
+
+        <h1>Welcome, {{ current_user.name }} 👋</h1>
+
+        <p class="text-muted">
+            Manage your daily expenses easily.
+        </p>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+        <!-- Total Expenses -->
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-primary text-center h-100">
+
+                <div class="card-body">
+
+                    <h5>Total Expenses</h5>
+
+                    <h2 class="text-primary">
+                        {{ total_expenses }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Total Spent -->
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-success text-center h-100">
+
+                <div class="card-body">
+
+                    <h5>Total Spent</h5>
+
+                    <h2 class="text-success">
+                        ₹ {{ "%.2f"|format(total_amount) }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Categories -->
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-warning text-center h-100">
+
+                <div class="card-body">
+
+                    <h5>Categories</h5>
+
+                    <h2 class="text-warning">
+                        {{ total_categories }}
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Latest Expense -->
+        <div class="col-md-3 mb-3">
+
+            <div class="card shadow border-danger text-center h-100">
+
+                <div class="card-body">
+
+                    <h5>Latest Expense</h5>
+
+                    {% if latest_expense %}
+
+                        <strong>{{ latest_expense.title }}</strong>
+
+                        <br>
+
+                        ₹ {{ "%.2f"|format(latest_expense.amount) }}
+
+                    {% else %}
+
+                        <p>No Expenses Yet</p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Budget Section -->
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-info text-white">
+
+            <h4>💰 Monthly Budget</h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <h5>
+
+                Budget :
+                ₹ {{ "%.2f"|format(budget_amount) }}
+
+            </h5>
+
+            <h5>
+
+                Remaining :
+                ₹ {{ "%.2f"|format(remaining_budget) }}
+
+            </h5>
+
+            {% if remaining_budget < 0 %}
+
+            <div class="alert alert-danger mt-3">
+
+                ⚠ Budget Exceeded!
+
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-success mt-3">
+
+                ✅ You are within your budget.
+
+            </div>
+
+            {% endif %}
+
+            <a href="{{ url_for('set_budget') }}"
+               class="btn btn-info">
+
+                Set / Update Budget
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- Quick Actions -->
+
+    <div class="text-center mt-4">
+
+        <h3>Quick Actions</h3>
+
+        <br>
+
+        <a href="{{ url_for('add_expense') }}"
+           class="btn btn-success btn-lg m-2">
+
+            ➕ Add Expense
+
+        </a>
+
+        <a href="{{ url_for('expenses') }}"
+           class="btn btn-primary btn-lg m-2">
+
+            📋 View Expenses
+
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="btn btn-danger btn-lg m-2">
+           <a href="{{ url_for('monthly_report') }}"
+   class="btn btn-warning btn-lg m-2">
+
+    📅 Monthly Report
+
+</a>
+<a href="{{ url_for('export_csv') }}"
+   class="btn btn-secondary btn-lg m-2">
+
+    📄 Export CSV
+
+</a>
+            🚪 Logout
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

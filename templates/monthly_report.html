@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}
+Monthly Report
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        📅 Monthly Expense Report
+    </h2>
+
+    <!-- Select Month -->
+
+    <form method="POST" class="row g-3 mb-4">
+
+        <div class="col-md-6">
+
+            <input
+                type="month"
+                name="month"
+                class="form-control"
+                value="{{ selected_month }}"
+                required>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                View Report
+
+            </button>
+
+        </div>
+
+    </form>
+
+    {% if expenses %}
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>Date</th>
+
+                <th>Title</th>
+
+                <th>Category</th>
+
+                <th>Amount</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for expense in expenses %}
+
+            <tr>
+
+                <td>{{ expense.expense_date }}</td>
+
+                <td>{{ expense.title }}</td>
+
+                <td>{{ expense.category }}</td>
+
+                <td>₹ {{ "%.2f"|format(expense.amount) }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    <div class="alert alert-success">
+
+        <strong>Total Spent:</strong>
+
+        ₹ {{ "%.2f"|format(total_amount) }}
+
+    </div>
+
+    {% elif selected_month %}
+
+    <div class="alert alert-warning">
+
+        No expenses found for this month.
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

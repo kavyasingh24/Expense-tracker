@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Expense
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-success text-white text-center">
+
+                    <h3>Add New Expense</h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        <!-- Expense Title -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Expense Title
+                            </label>
+
+                            <input
+                                type="text"
+                                name="title"
+                                class="form-control"
+                                placeholder="Enter Expense Title"
+                                required>
+
+                        </div>
+
+                        <!-- Amount -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Amount (₹)
+                            </label>
+
+                            <input
+                                type="number"
+                                name="amount"
+                                class="form-control"
+                                step="0.01"
+                                placeholder="Enter Amount"
+                                required>
+
+                        </div>
+
+                        <!-- Category -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Category
+                            </label>
+
+                            <select
+                                name="category"
+                                class="form-select"
+                                required>
+
+                                <option value="">Select Category</option>
+
+                                <option>Food</option>
+
+                                <option>Travel</option>
+
+                                <option>Shopping</option>
+
+                                <option>Bills</option>
+
+                                <option>Education</option>
+
+                                <option>Entertainment</option>
+
+                                <option>Health</option>
+
+                                <option>Other</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Date -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Expense Date
+                            </label>
+
+                            <input
+                                type="date"
+                                name="expense_date"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+                        <!-- Description -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Description
+                            </label>
+
+                            <textarea
+                                name="description"
+                                class="form-control"
+                                rows="4"
+                                placeholder="Write a short description (Optional)"></textarea>
+
+                        </div>
+
+                        <!-- Buttons -->
+
+                        <div class="d-grid gap-2">
+
+                            <button
+                                type="submit"
+                                class="btn btn-success btn-lg">
+
+                                Save Expense
+
+                            </button>
+
+                            <a
+                                href="{{ url_for('dashboard') }}"
+                                class="btn btn-secondary">
+
+                                Back to Dashboard
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
