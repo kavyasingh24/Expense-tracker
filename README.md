@@ -136,25 +136,29 @@ python app.py
 
 ###  Home Page
 
-_Add screenshot here_
+<img width="1920" height="1128" alt="Screenshot 2026-08-04 140407" src="https://github.com/user-attachments/assets/6f78444c-f3a6-4058-b547-dc1d06577e45" />
+
 
 ---
 
 ###  Dashboard
 
-_Add screenshot here_
+<img width="1920" height="1128" alt="Screenshot 2026-08-04 140437" src="https://github.com/user-attachments/assets/14614305-c6a0-4f7c-bfad-830724b29fd6" />
+
 
 ---
 
 ###  Expense Management
 
-_Add screenshot here_
+<img width="1920" height="1128" alt="Screenshot 2026-08-04 140455" src="https://github.com/user-attachments/assets/6c6f399a-5279-4902-8256-8a668e46147e" />
+
 
 ---
 
 ###  Monthly Report
 
-_Add screenshot here_
+<img width="1920" height="1128" alt="Screenshot 2026-08-04 140659" src="https://github.com/user-attachments/assets/5222a97a-3cbe-4576-b867-f28b56999c5c" />
+
 
 ---
 
